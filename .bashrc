@@ -35,23 +35,31 @@ tnew () {
 }
 
 goto () {
-
 	case $1 in
 
 		israel)
 			sshpass -p 123456 ssh ftp_tmp@israel
 		;;
+		doch)
+			sshpass -p a ssh root@doch
+		;;
+		doc1)
+			sshpass -p a ssh root@doch -p 8022
+		;;
+		doc2)
+			sshpass -p a ssh root@doch -p 8023
+		;;
 		b03h)
 			sshpass -p caveo123 ssh vbolla@b03h
 		;;
 		b03s1)
-			sshpass -p a root@b03s1
+			sshpass -p a ssh root@b03s1
 		;;
 		b03s2)
-			sshpass -p a root@b03s2
+			sshpass -p a ssh root@b03s2 -p 8022
 		;;
 		b03gw2)
-			sshpass -p a root@b03gw2
+			sshpass -p a ssh root@b03gw2
 		;;
 		*)
 			echo "give an argument"
