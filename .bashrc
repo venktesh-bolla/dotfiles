@@ -53,7 +53,7 @@ goto () {
 			sshpass -p caveo123 ssh vbolla@b03h
 		;;
 		b03s1)
-			sshpass -p a ssh root@b03s1
+			sshpass -p caveo123 ssh vbolla@b03s1
 		;;
 		b03s2)
 			sshpass -p a ssh root@b03s2 -p 8022
@@ -62,7 +62,7 @@ goto () {
 			sshpass -p a ssh root@b03gw2
 		;;
 		*)
-			echo "give an argument"
+			echo "Invalid argument argument"
 		;;
 	esac
 }
