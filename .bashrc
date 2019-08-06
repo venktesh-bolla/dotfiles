@@ -61,6 +61,9 @@ goto () {
 		b03gw2)
 			sshpass -p a ssh root@b03gw2
 		;;
+		b03)
+			sshpass -p v ssh root@b03
+		;;
 		*)
 			echo "Invalid argument argument"
 		;;
