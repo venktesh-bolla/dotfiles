@@ -194,3 +194,19 @@ set tags=tags;/
 autocmd BufEnter * :syntax sync fromstart
 ":syntax sync fromstart
 "autocmd BufEnter * :syntax sync minlines=200
+
+"" Turning On Whitespace Characters
+"" eol - Character to show at the end of each line.
+"" tab - Two characters to be used to show a tab.
+"" trail - Character to show for trailing spaces.
+"" extends - Character to show in the last column when the line continues beyond
+"" the right of the screen.
+"" precedes - Character to show in the first column when the line continues
+"" beyond the left of the screen.
+"" conceal - Character to show in place of concealed text, when conceallevel is
+"" set to 1.
+"" nbsp - Character to show for a space.
+set listchars=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
+set list
+"" For not showing listed options
+"set nolist
