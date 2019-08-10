@@ -163,6 +163,9 @@ set cursorline
 hi CursorLine term=bold cterm=bold gui=bold guibg=black
 hi UnderLine term=underline cterm=underline gui=underline
 au BufNewFile,BufRead *.dox setfiletype doxygen
+highlight Search ctermbg=yellow 
+highlight Search ctermfg=red
+
 set mouse=
 
 nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>	
@@ -206,7 +209,7 @@ autocmd BufEnter * :syntax sync fromstart
 "" conceal - Character to show in place of concealed text, when conceallevel is
 "" set to 1.
 "" nbsp - Character to show for a space.
-set listchars=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
-set list
+"set listchars=eol:$,nbsp:_,tab:>-,trail:~,extends:>,precedes:<
+"set list
 "" For not showing listed options
 "set nolist
