@@ -5,6 +5,10 @@
 " Description:  Derived from original Vim _vimrc file
 " Important:    Look for "Uncomment if needed." for potentially useful options
 
+"For mac vim syntax highlight
+filetype plugin indent on
+syntax on
+
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 if !has("unix")
