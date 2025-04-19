@@ -1,0 +1,26 @@
+# You may uncomment the following lines if you want `ls' to be colorized:
+alias setenv="set"
+export LS_OPTIONS='--color=auto'
+#eval "`dircolors`"
+
+alias ls='ls $LS_OPTIONS'
+alias ll='ls $LS_OPTIONS -l'
+alias la='ls $LS_OPTIONS -a'
+alias l='ls $LS_OPTIONS -lA'
+
+# Some more alias to avoid making mistakes:
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+export PATH=~/bin:$PATH:/sbin
+
+umask 0022
+
+export PATH=/nfs/site/proj/chdsw_ci/common/env/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/local/bin/:/nfs/site/proj/chdsw_ci/common/quilt/bin/:$PATH
+
+#export PYTHONPATH=/nfs/site/proj/chdsw_ci/common/env/lib/python2.7:/nfs/site/proj/chdsw_ci/common/env/lib/python2.7/site-packages:/nfs/site/proj/chdsw_ci/common:$PYTHONPATH
+
+#export LD_LIBRARY_PATH=/nfs/site/proj/chdsw_ci/common/env/lib:$LD_LIBRARY_PATH
+
+shopt -s expand_aliases
+source /home/vbolla/mydata/ven_bash_apis.sh
