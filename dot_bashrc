@@ -26,4 +26,4 @@ export PATH="$PATH:/opt/gcc-arm-none-eabi-13-3-rel1/bin"
 
 shopt -s expand_aliases
 source ~/dotfiles/ven_bash_apis.sh
-. "$HOME/.cargo/env"
+[ ! -z $HOME ] && [ -f $HOME/.cargo/env ] && . "$HOME/.cargo/env"
