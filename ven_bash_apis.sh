@@ -3,16 +3,17 @@
 shopt -s expand_aliases
 
 alias setenv="set"
-export HISTFILESIZE=100000
-export HISTSIZE=100000
 export HISTCONTROL=ignoreboth:erasedups
-#PROMPT_COMMAND="${PROMPT_COMMAND}${PROMPT_COMMAND:+;}history -a; history -n"
-
+export HISTFILE=~/.bash_history
+export HISTSIZE=
+export HISTFILESIZE=
+shopt -s histappend
+PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ## My custom fuctions for easy life at office
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
 #neovim path
-export PATH=$PATH:/home/$USER/neo_vim/nvim-linux64/bin
+export PATH=$PATH:~/neo_vim/nvim-linux64/bin
 alias v="nvim"
 alias n="nvim"
 alias vimm="nvim"
@@ -1664,7 +1665,7 @@ vdpm_for_each_file ()
 	done
 
 }
-source /etc/profile.d/modules.sh
+#source /etc/profile.d/modules.sh
 
 alias okmcfg="make kernel_menuconfig CONFIG_TARGET=subtarget"
 alias okoldcfg="make kernel_oldconfig CONFIG_TARGET=subtarget"
@@ -1677,8 +1678,8 @@ alias dpcl="dpm_compile clean"
 alias dpcv="dpm_compile compile V"
 alias okcfg="kern_auto_conf_change"
 
-export PATH=/home/$USER/bin:/local/$USER/svn_dpm_repo/ppa/bin:/nfs/site/proj/chdsw_ci/common/kw/klocwork_2020_1/user/bin:$PATH
-alias vrepo="/home/$USER/bin/repo"
+#export PATH=/home/$USER/bin:/local/$USER/svn_dpm_repo/ppa/bin:/nfs/site/proj/chdsw_ci/common/kw/klocwork_2020_1/user/bin:$PATH
+alias vrepo="~/bin/repo"
 alias pull_ugw8="rm -rf .repo ugw_sw; vrepo init -u ssh://git@mbitbucket.maxlinear.com:29418/sw_ugw/manifest.git -b 8.x && vrepo sync -j32 && cd ugw_sw && ./ugw-prepare-all.sh -u && ./ugw-prepare-all.sh"
 alias pull_ugw9="rm -rf .repo ugw_sw; unset PYTHONPATH; PYTHONPATH=""; vrepo init -u ssh://git@mbitbucket.maxlinear.com:29418/sw_ugw/manifest.git -b 9.x && vrepo sync -j32 && cd ugw_sw && ./ugw-prepare-all.sh -u && ./ugw-prepare-all.sh"
 alias set_prxd="cd openwrt; (vget_config_str2num PRX300_DEBUG) | ./scripts/ltq_change_environment.sh switch"
@@ -1747,9 +1748,9 @@ alias vtags="rm -rf tags; rm -rf cscope*; ctags -R; cscope -vRkb"
 alias cd_mips_feeds="cd ../feeds/ugw/targets/intel_mips"
 alias cd_x86_feeds="cd ../feeds/ugw/targets/intel_x86/intel_x86"
 alias cd_dpm_feeds="cd ../feeds/ugw/soc/mxl/gwdpa-dpm"
-alias checkpatch_onf="/home/$USER/mydata/checkpatch/checkpatch.pl --no-tree -f --strict"
-alias cleanfile_onf="/home/$USER/mydata/checkpatch/cleanfile"
-alias vedit="vim /home/$USER/mydata/ven_bash_apis.sh && vs"
+alias checkpatch_onf="~/dotfiles/checkpatch/checkpatch.pl --no-tree -f --strict"
+alias cleanfile_onf="~/dotfiles/checkpatch/cleanfile"
+alias vedit="vim ~/dotfiles/ven_bash_apis.sh && vs"
 alias vs="source ~/.bashrc"
 alias vgr="vgen_rel_tag \`vcb\`"
 alias vgt="vgen_tmp_tag \`vcb\`"
@@ -1789,7 +1790,7 @@ vadd () {
 
 alias vrm="/bin/rm"
 
-RB="/local/$USER/Recycle_Bin"
+RB=~/Recycle_Bin
 RM () {
 	#Dont delete files directly, just move to RB
 	VOLDPWD=$OLDPWD
@@ -1971,16 +1972,21 @@ cat > kgdb_dir/uboot_kernel_params.txt << EOF
 setenv vaddmisc 'setenv bootargs ${bootargs} earlycon=lantiq,mmio32,0xe0a00000 console=ttyLTQ0,115200n8r kgdboc=ttyLTQ0,115200n8r dp_dbg=gdb nokaslr ethaddr=${ethaddr} maxcpus=4 mem=2048M memmap=31M$1M,0x${filesystem_size}!0x${rootfs_loadaddr} initcall_debug=0 loglevel=8 intel_idle.max_cstate=2 max_cpufreq=2028000 init_cstate_margin=1 init_pstate_threshold=20 epu_table_ver=${epu_table_ver}'
 EOF
 
-	if [ ! -d /local/$USER/kgdb_dir ]; then
-		mv kgdb_dir /local/$USER/
+	if [ ! -d ~/kgdb_dir ]; then
+		mv kgdb_dir ~/
 	else
-		echo "Error: one kgdb_dir is already there at /local/$USER!, Please delete and redo"
+		echo "Error: one kgdb_dir is already there at ~/!, Please delete and redo"
 		return
 	fi
-	echo "mk_kgdb_dir: Success, kept at /local/$USER"
+	echo "mk_kgdb_dir: Success, kept at ~/"
 }
 
 #bracketed paste mode - disable
 alias disable_backtraced_mode='printf "\e[?2004l"'
 disable_backtraced_mode
 #bind 'set enable-bracketed-paste off'
+
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+

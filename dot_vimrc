@@ -1,6 +1,6 @@
 "Vim plug config
-call plug#begin()
-Plug 'pablopunk/native-sidebar.vim'
+"call plug#begin()
+"Plug 'pablopunk/native-sidebar.vim'
 
 " The default plugin directory will be as follows:
 " "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -49,7 +49,7 @@ Plug 'pablopunk/native-sidebar.vim'
 "
 " " Initialize plugin system
 " " - Automatically executes `filetype plugin indent on` and `syntax enable`.
-call plug#end()
+"call plug#end()
 
 "set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
@@ -291,9 +291,12 @@ function! LoadCscope()
   endif
 endfunction
 au BufEnter /* call LoadCscope()
-set ls=2
+set laststatus=2
+set statusline=%f\ %y\ %m\ %=[Ln:\%l,\ Col:\%c]\ [%P] 
+
 " Below Vim will look for tags file everywhere starting from the current directory up to the root.
 set tags=tags;/
+
 
 " vim - to hilight full file syntax in a huge file
 autocmd BufEnter * :syntax sync fromstart
@@ -396,3 +399,7 @@ endfunction
 
 "let g:native_sidebar_shortcut = '<c-t>'
 
+if has('patch-8.0.0600')
+  set paste
+  set pastetoggle=<F2>  " toggle paste mode with F2
+endif

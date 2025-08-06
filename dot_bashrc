@@ -16,11 +16,14 @@ export PATH=~/bin:$PATH:/sbin
 
 umask 0022
 
-export PATH=/nfs/site/proj/chdsw_ci/common/env/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/local/bin/:/nfs/site/proj/chdsw_ci/common/quilt/bin/:$PATH
+#export PATH=/nfs/site/proj/chdsw_ci/common/env/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/local/bin/:/nfs/site/proj/chdsw_ci/common/quilt/bin/:$PATH
 
 #export PYTHONPATH=/nfs/site/proj/chdsw_ci/common/env/lib/python2.7:/nfs/site/proj/chdsw_ci/common/env/lib/python2.7/site-packages:/nfs/site/proj/chdsw_ci/common:$PYTHONPATH
 
 #export LD_LIBRARY_PATH=/nfs/site/proj/chdsw_ci/common/env/lib:$LD_LIBRARY_PATH
 
+export PATH="$PATH:/opt/gcc-arm-none-eabi-13-3-rel1/bin"
+
 shopt -s expand_aliases
-source /home/vbolla/mydata/ven_bash_apis.sh
+source ~/dotfiles/ven_bash_apis.sh
+. "$HOME/.cargo/env"
